@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ artist.artist_profile.alias }}{% endblock %}
+
+{% block content %}
+<main>
+  <div class="row">
+    <div class="col-md-12">
+      <img src="{{ artist.profile_image.url }}" alt="{{ artist.alias }}" class="img-fluid mb-3">
+      <h3>{{ artist.alias }}</h3>
+      <p>{{ artist.description }}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Art Pieces</h4>
+      {% if art_pieces %}
+      <div class="row">
+        {% for art_piece in art_pieces %}
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ art_piece.art_piece_file.url }}" class="card-img-top" alt="{{ art_piece.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ art_piece.artist.username }}</h5>
+                    <p class="card-text">{{ art_piece.title }}</p>
+                    <p class="card-text">Current Bidding Price: {{ art_piece.start_bidding_price }} SAR</p>
+                    <!-- <p class="card-text">Category: {{ art_piece.category }}</p> -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No art pieces found for this artist.</p>
+      {% endif %}
+    </div>
+  </div>
+</main>
+{% endblock %}

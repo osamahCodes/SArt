@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} My Listed Items {% endblock %}
+{% block content %}
+    <main>
+        <h1> My Listed Items</h1>
+        <div class="container">
+            <div class="row">
+                {% for art_piece in art_pieces %}
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ art_piece.art_piece_file.url }}" class="card-img-top" alt="{{ art_piece.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ art_piece.artist.username }}</h5>
+                                <p class="card-text">{{ art_piece.title }}</p>
+                                <p class="card-text">Current Bidding Price: {{ art_piece.start_bidding_price }} SAR</p>
+                                <p class="card-text">Category: {{ art_piece.category }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

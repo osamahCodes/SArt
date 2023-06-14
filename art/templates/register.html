@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Register {% endblock %}
+  {% block content %}
+      <main>
+        <div class="container">
+            <div class="register">
+                <h5>Register</h5>
+                <button class="btn btn-primary" id="artist">Register as artist</button>
+                <button class="btn btn-primary" id="buyer">Register as buyer</button>
+            </div>
+        </div>  
+    </div>
+    <div class="reg-form">
+        <form id="register-form" action="" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Username" required>
+            </div>
+            
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="Password" required>
+                <span class="input-group-text" id="basic-addon1"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+      </main>
+{% endblock %}

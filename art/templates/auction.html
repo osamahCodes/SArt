@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+<!-- important suggestion in chatgpt -->
+{% block title %} Auction {% endblock %}
+  {% block content %}
+      <main>
+        <h1>Auctions</h1>
+        <div class="container">
+            <div class="row">
+              {% for art_piece in art_pieces %}
+                <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                      <img src="{{ art_piece.art_piece_file.url }}" class="card-img-top" alt="Artwork Image">
+                      <div class="card-body">
+                        <h5 class="card-title">Artist: {{art_piece.artist}}</h5>
+                        <p class="card-text">Category: {{art_piece.category}}</p>
+                        <p class="card-text">Current Bidding Price: SAR {{art_piece.highest_bid}}</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bidModal{{ art_piece.id }}">Bid Now</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal fade" id="bidModal{{ art_piece.id }}" tabindex="-1" role="dialog" aria-labelledby="bidModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="bidModalLabel">Place Bid</h5>
+                    </div>
+                    <form method="post" action="{% url 'auction_bid' art_piece.id %}">
+                      {% csrf_token %}
+                      <div class="modal-body">
+                        <label for="bid_amount">Bid Amount:</label>
+                        <input type="number" id="bid_amount" name="bid_amount" min="{{ art_piece.start_bidding_price }}" step="0.01" required>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Place Bid</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+                <!-- <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://cdn.theculturetrip.com/images/56-254116-dana-awartani-orientalism.jpg" class="card-img-top" alt="Artwork Image">
+                        <div class="card-body">
+                          <h5 class="card-title">dana awartani</h5>
+                          <p class="card-text">orientalism</p>
+                          <p class="card-text">Current Bidding Price: SAR 3400</p>
+                          <a href="#" class="btn btn-primary">Bid Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://cdn.theculturetrip.com/images/56-254116-dana-awartani-orientalism.jpg" class="card-img-top" alt="Artwork Image">
+                        <div class="card-body">
+                          <h5 class="card-title">dana awartani</h5>
+                          <p class="card-text">orientalism</p>
+                          <p class="card-text">Current Bidding Price: SAR 3400</p>
+                          <a href="#" class="btn btn-primary">Bid Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://cdn.theculturetrip.com/images/56-254116-dana-awartani-orientalism.jpg" class="card-img-top" alt="Artwork Image">
+                        <div class="card-body">
+                          <h5 class="card-title">dana awartani</h5>
+                          <p class="card-text">orientalism</p>
+                          <p class="card-text">Current Bidding Price: SAR 3400</p>
+                          <a href="#" class="btn btn-primary">Bid Now</a>
+                        </div>
+                    </div>
+                </div>-->
+            </div> 
+        </div>
+      </main>
+{% endblock %}

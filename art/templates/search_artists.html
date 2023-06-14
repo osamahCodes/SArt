@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+  {% if artists %}
+    <h2>Search results:</h2>
+    <ul>
+      {% for artist in artists %}
+        <li><a href="{% url 'artist_profile' profile_id=artist.user.artist_profile.user_id %}">{{ artist.alias }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+{% endblock %}

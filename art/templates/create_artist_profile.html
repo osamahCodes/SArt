@@ -1,0 +1,23 @@
+{% extends "base.html" %}]
+{% block title %} Create Artist Profile {% endblock %}
+{% block content %}
+<main>
+    <h1>Create Artist Profile</h1>
+    <form method="post" enctype=multipart/form-data action="{% url 'create_artist_profile' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="alias" class="form-label">Alias</label>
+        <input type="text" class="form-control" id="alias" name="alias" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="profile_picture" class="form-label">Profile Picture</label>
+        <input type="file" class="form-control" id="profile_picture" accept=".jpg,.png" name="profile_image" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Profile</button>
+    </form>
+</main>
+{% endblock %}

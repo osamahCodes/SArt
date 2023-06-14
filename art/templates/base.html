@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%} {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'app.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">SArt</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'galleries' %}">Galleries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'artists' %}">Artists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+          </li>
+          {% if user.is_authenticated %}
+            {% if user.is_staff %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sell' %}">Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'my_listed_items' %}">My Listed Items</a>
+              </li>
+              {% if user.artist_profile %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'edit_artist_profile' profile_id=user.artist_profile.id %}">Edit Profile</a>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'create_artist_profile' %}">Create a Profile</a>
+                  </li>
+              {% endif %}
+
+            {% endif %}
+            {% if not user.is_staff %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'my_collection' %}">My Collection</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'auction' %}">Auction</a>
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn nav-link">Logout</button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Login
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+              </ul>
+            </li>
+          {% endif %}
+        </ul>
+        <form class="d-flex" role="search" action="{% url 'search_artists' %}">
+          <input class="form-control me-2" type="search" placeholder="artist's alias" aria-label="Search" name="query">
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+              {% if message.tags == 'success' %}
+                  <div class="alert alert-success" role="alert">
+                      {{ message }}
+                  </div>
+              {% elif message.tags == 'error' %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ message }}
+                  </div>
+              {% endif %}
+          {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+    <footer class="bd-footer py-1 mt-5 bg-light">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+              <p>&copy; 2023 all rights reserved for SArt</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      
+</body>
+</html>

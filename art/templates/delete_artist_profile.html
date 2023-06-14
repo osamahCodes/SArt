@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Delete Artist Profile {% endblock %}
+{% block content %}
+<main>
+    <h1>Delete Artist Profile</h1>
+    <p>Are you sure you want to delete your artist profile?</p>
+    <form method="post" action="{% url 'delete_artist_profile' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Profile</button>
+    </form>
+</main>
+{% endblock %}

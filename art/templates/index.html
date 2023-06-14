@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+      <main class="d-flex flex-column gap-3">
+          <div class="index-content gap-3 d-flex flex-column">
+            <div class="scroll-sideways">
+              <div class="container-fluid">
+                  <h1><em> categories</em></h1>
+                  <hr>
+                  <h1>wood slides</h1>
+                  <div class="overflow-auto row flex-nowrap flex-row">
+                    <div class="col-3">
+                      <img src="https://ahmedmater.imgix.net/AL-MALAZ.png?auto=compress%2Cformat&fit=clip&h=1000&w=1000&s=c684d75c3849c98fddcb3c3da9e1e008" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="https://ahmedmater.imgix.net/TELEVISION.png?auto=compress%2Cformat&fit=clip&h=1000&w=1000&s=bba7fc6c74f6f04438aad938451f43de" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="https://ahmedmater.imgix.net/CADILLAC.png?auto=compress%2Cformat&fit=clip&h=1000&w=1000&s=a08b793aaff83b9a842c681b907ef656" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="https://ahmedmater.imgix.net/caravan.png?auto=compress%2Cformat&fit=clip&h=1000&w=1000&s=336a52d5d0acd38e02ff0b58796f91d9" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="https://ahmedmater.imgix.net/ROADBLOCK.png?auto=compress%2Cformat&fit=clip&h=1000&w=1000&s=d7c337d010097bf14b7e1437772b96df" class="img-fluid">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <a href="{% url 'categories' %}" class="btn btn-outline-dark mt-auto w-25">More Categories</a>
+          </div>
+          <div class="index-content gap-3 d-flex flex-column">
+            <h1><em> Artists</em></h1>
+            <hr>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-2">
+              <!-- First artist card -->
+              <div class="col">
+                <div class="card shadow-sm h-100">
+                  <img src="https://picsum.photos/id/1018/400/250" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Marcello Petisci</h5>
+                    <p class="card-text mb-4">Italian multidisciplinary artist, Marcello Petisci creates works that merge nature, technology, and spirituality. </p>
+                    <a href="#" class="btn btn-outline-dark mt-auto">View Works</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Second artist card -->
+              <div class="col">
+                <div class="card shadow-sm h-100">
+                  <img src="https://picsum.photos/id/1015/400/250" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Kathryn Macnaughton</h5>
+                    <p class="card-text mb-4">Canadian mixed-media artist, Kathryn Macnaughton creates colorful, abstract works that reflect the energy and chaos of contemporary life. </p>
+                    <a href="#" class="btn btn-outline-dark mt-auto">View Works</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Third artist card -->
+              <div class="col">
+                <div class="card shadow-sm h-100">
+                  <img src="https://picsum.photos/id/1020/400/250" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Emmanuel Barrouyer</h5>
+                    <p class="card-text mb-4">French painter, Emmanuel Barrouyer creates bold, figurative works that explore themes of sexuality, gender, and identity. </p>
+                    <a href="#" class="btn btn-outline-dark mt-auto">View Works</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Fourth artist card -->
+              <div class="col">
+                <div class="card shadow-sm h-100">
+                  <img src="https://picsum.photos/id/1005/400/250" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Liu Bolin</h5>
+                    <p class="card-text mb-4">Chinese performance artist, Liu Bolin creates photographs and installations that explore themes of visibility, identity, and consumer culture. </p>
+                    <a href="#" class="btn btn-outline-dark mt-auto">View Works</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="artists.html" class="btn btn-outline-dark mt-auto w-25">More Artists</a>
+          </div>
+          <div class="index-content gap-3 d-flex flex-column">
+            <div class="scroll-sideways">
+              <div class="container-fluid">
+                  <h1><em> Galleries</em></h1>
+                  <hr>
+                  <h1> Saudi Contemporary Art in D.C.: Kennedy Center</h1>
+                  <div class="overflow-auto row flex-nowrap flex-row">
+                    <div class="col-3">
+                      <img src="http://edgeofarabia.com/content/made/content/uploads/default_site/exhibition_uploads/Kennedy_Centre-Saudi_Art-Edge_of_Arabia-3_625_417.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="http://edgeofarabia.com/content/made/content/uploads/default_site/exhibition_uploads/Kennedy_Centre-Saudi_Art-Edge_of_Arabia-4_625_417.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="http://edgeofarabia.com/content/made/content/uploads/default_site/exhibition_uploads/Kennedy_Centre-Saudi_Art-Edge_of_Arabia-5_625_417.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="http://edgeofarabia.com/content/made/content/uploads/default_site/exhibition_uploads/Kennedy_Centre-Saudi_Art-Edge_of_Arabia-1_625_417.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-3">
+                      <img src="http://edgeofarabia.com/content/made/content/uploads/default_site/exhibition_uploads/Kennedy_Centre-Saudi_Art-Edge_of_Arabia-2_625_417.jpg" class="img-fluid">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <a href="{% url 'galleries' %}" class="btn btn-outline-dark mt-auto w-25">More Galleries</a>
+          </div>
+      </main>
+{% endblock %}
